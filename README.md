@@ -9,11 +9,11 @@ Proyecto para realizar encuestas a través de mulitples canales (web, email, sms
 - Configuarción de Typescript
 - Configuración de rutas, controladores, servicios y entidades.
 
-## Lista de dependencias para la instalación:
+## Lista de dependencias para la instalación
 
 Dependenciaas necesarias:
 ```
-npm install,  class-validator cors dotenv express morgan mysql typeorm  typeorm-naming-strategies typescript
+npm install class-validator cors dotenv express morgan mysql typeorm  typeorm-naming-strategies typescript
 ```
 
 Dependencias de desarrollo necesarias
