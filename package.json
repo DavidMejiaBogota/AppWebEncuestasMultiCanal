@@ -1,0 +1,27 @@
+{
+  "name": "3nodejstypescript",
+  "version": "1.0.0",
+  "description": "App Web Encuestas Múlticanal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "#TipeScript",
+    "#Nodejs",
+    "#POO",
+    "#DockerCompose",
+    "#MySQL",
+    "#Morgan",
+    "#ClassValidator",
+    "#TypeORM",
+    "#TypeORM-Naming-Strategies",
+    "#types/cors",
+    "#types/express",
+    "#types/morgan",
+    "#concurrently",
+    "#mondemon"
+  ],
+  "author": "José David Mejía Meneses",
+  "license": "ISC"
+}
