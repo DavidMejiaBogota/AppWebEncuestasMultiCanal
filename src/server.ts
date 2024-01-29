@@ -5,15 +5,17 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import { UserRouter } from './router/user.router';
+import { Configserver } from './config/config';
 
 //Clase de servidor inicial
-class ServerBootstrap {
+class ServerBootstrap extends Configserver {
     public app: express.Application = express()//App a demas del tipado va a tener toda la configuración real;
-    private port: number=8000
+    private port: number= this.getNumberEnv('PORT');
     
     //Llamado a la ejecución del método constructor
     constructor(){
         //Se configura los métodos necesarios para el servidor funcione corretamente
+        super();
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended: true}));
         this.app.use(morgan('dev'));
