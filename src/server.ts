@@ -17,12 +17,21 @@ class ServerBootstrap {
         this.app.use(express.urlencoded({extended: true}));
         this.app.use(morgan('dev'));
         this.app.use(cors());
+        
+        //Ejecución de la ruta
+        this.app.get("/api/hola", (req, res) =>{
+            res.status(200).json({
+                message: "Iniciando_2",
+            });
+        });
         this.listen(); //Se llama a listen y se ejecuta (se levanta el servidor)
     };
 
+    //
+
     public listen() {
         this.app.listen(this.port, ()=>{
-            console.log(`Sever listning on port ${this.port}`);
+            console.log(`Sever listening on port ${this.port}`);
         });
     }
 
