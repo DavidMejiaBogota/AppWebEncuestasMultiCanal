@@ -4,6 +4,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import { UserRouter } from './router/user.router';
 
 //Clase de servidor inicial
 class ServerBootstrap {
@@ -18,16 +19,13 @@ class ServerBootstrap {
         this.app.use(morgan('dev'));
         this.app.use(cors());
         
-        //Ejecución de la ruta
-        this.app.get("/api/hola", (req, res) =>{
-            res.status(200).json({
-                message: "Iniciando_2",
-            });
-        });
+        this.app.use('/api', this.routers());
         this.listen(); //Se llama a listen y se ejecuta (se levanta el servidor)
     };
 
-    //
+    routers(): Array<express.Router>{
+        return [new UserRouter().router];
+    }
 
     public listen() {
         this.app.listen(this.port, ()=>{
