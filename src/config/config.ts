@@ -1,4 +1,6 @@
 import * as dotenv from 'dotenv';
+import {DataSource, DataSourceOptions} from "typeorm";
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 export abstract class Configserver {
     constructor() {
@@ -32,5 +34,23 @@ export abstract class Configserver {
             arrEnv.unshift(...sringToArray);
         }
         return '.' + arrEnv.join('.')
+    }
+
+    //Configuracón de typeORM para conectar a la base de datos.
+    public get typeORMConfig(): DataSourceOptions {
+        return {//Se configuran las variables de entorno
+            type: "mysql",
+            host: this.getEnvironment('DB_HOST'),
+            port: this.getNumberEnv('DB_PORT'),
+            username: this.getEnvironment('DB_USER'),
+            password: this.getEnvironment('DB_PASSWORD'),
+            database: this.getEnvironment('DB_DATABASE'),
+            //Se configura la lectura de entidades
+            entities: [__dirname + "/../**/*.entity{.ts,.js}"],
+            migrations: [__dirname + "/../../migrations/*{.ts,.js}"],
+            synchronize: true,
+            logging: false,
+            namingStrategy: new SnakeNamingStrategy(),
+        };  
     }
 }
