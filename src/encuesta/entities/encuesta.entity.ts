@@ -11,7 +11,7 @@ export class EncuestaEntity extends BaseEntity{
     @Column({name: "estado_encuesta", type: "boolean", default: true})
     estadoEncuesta!: boolean
 
-    @ManyToOne(()=>UsuarioBasicoEntity, (usuario_basico)=>usuario_basico.encuestas)
+    @ManyToOne(()=>UsuarioBasicoEntity, (usuario_basico)=>usuario_basico.encuestas, {onDelete: "CASCADE"})
     @JoinColumn({name:'usuario_basico_id'})
     usuario_basico!:UsuarioBasicoEntity;
 }
