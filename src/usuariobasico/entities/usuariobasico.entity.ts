@@ -1,7 +1,8 @@
-import { Column, Entity, JoinColumn, OneToOne } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne } from "typeorm";
 import { BaseEntity} from "../../config/base.entity";
 import { Length, IsEmail } from "class-validator";
 import { UserEntity } from "../../user/entities/user.entity";
+import { EncuestaEntity } from "../../encuesta/entities/encuesta.entity";
 
 @Entity({name: "usuario_basico"})
 export class UsuarioBasicoEntity extends BaseEntity {
@@ -41,4 +42,7 @@ export class UsuarioBasicoEntity extends BaseEntity {
     @OneToOne(()=> UserEntity, (user)=> user.usuario_basico) //Establece la relación de uno a uno con la tabla usuario_basico y user.
     @JoinColumn()
     user!: UserEntity;
+    
+    @OneToMany(()=> EncuestaEntity, (encuesta)=> encuesta.usuario_basico)
+    encuestas!: EncuestaEntity[];
 }
