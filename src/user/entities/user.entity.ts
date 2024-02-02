@@ -1,5 +1,6 @@
 import { Column, Entity } from "typeorm";
 import { BaseEntity } from "../../config/base.entity";
+import { Length, Matches } from "class-validator";
 
 
 enum Genero {
@@ -20,13 +21,7 @@ export class userEntity extends BaseEntity {
         nullable: true,
     })
     fecha_nacimiento!: Date;
-    
-    @Column({
-        type: 'varchar',
-        nullable: true,
-    })
-    direccion!: string;
-    
+           
     @Column({
         type: 'varchar',
         length: 255,
@@ -35,6 +30,11 @@ export class userEntity extends BaseEntity {
         primary: true,
     })
     email!: string;
+
+    @Column({nullable: false})
+    @Length(12, 255, { message: 'La contraseña debe tener entre 12 y 255 caracteres' })
+    @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/, { message: 'La contraseña debe contener minúsculas, mayúsculas, números y caracteres especiales' })
+    password!: string;
     
     @Column({
         type: 'varchar',
@@ -64,8 +64,23 @@ export class userEntity extends BaseEntity {
     genero!: Genero;
     
     @Column({
+        type: 'varchar',
+        nullable: true,
+    })
+    direccion!: string;
+
+    @Column({nullable: true})
+    ciudad!: string;
+
+    @Column({nullable: true})
+    departamento!: string;
+
+    @Column({nullable: true})
+    pais!: string;
+    
+    @Column({
         type: "boolean",
-        default: true,
+        default: true
     })
     estado!: boolean;
 
