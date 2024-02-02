@@ -1,7 +1,7 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, OneToOne } from "typeorm";
 import { BaseEntity } from "../../config/base.entity";
 import { Length, Matches } from "class-validator";
-
+import { UsuarioBasicoEntity } from "../../usuariobasico/entities/usuariobasico.entity";
 
 enum Genero {
     Masculino = 'Masculino',
@@ -9,7 +9,7 @@ enum Genero {
 }
 
 @Entity({name:"user"})
-export class userEntity extends BaseEntity {
+export class UserEntity extends BaseEntity {
     @Column()
     nombre!: string;
 
@@ -83,5 +83,8 @@ export class userEntity extends BaseEntity {
         default: true
     })
     estado!: boolean;
+
+    @OneToOne(()=> UsuarioBasicoEntity, (usuario_basico)=> usuario_basico.user)
+    usuario_basico!: UsuarioBasicoEntity;
 
 };

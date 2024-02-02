@@ -1,6 +1,7 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne } from "typeorm";
 import { BaseEntity} from "../../config/base.entity";
 import { Length, IsEmail } from "class-validator";
+import { UserEntity } from "../../user/entities/user.entity";
 
 @Entity({name: "usuario_basico"})
 export class UsuarioBasicoEntity extends BaseEntity {
@@ -36,4 +37,8 @@ export class UsuarioBasicoEntity extends BaseEntity {
 
     @Column({name: "estado_empresa", type: "boolean", default: true})
     estadoEmpresa!: boolean;
+
+    @OneToOne(()=> UserEntity, (user)=> user.usuario_basico) //Establece la relación de uno a uno con la tabla usuario_basico y user.
+    @JoinColumn()
+    user!: UserEntity;
 }
