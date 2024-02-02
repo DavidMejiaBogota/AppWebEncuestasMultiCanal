@@ -43,6 +43,6 @@ export class UsuarioBasicoEntity extends BaseEntity {
     @JoinColumn()
     user!: UserEntity;
     
-    @OneToMany(()=> EncuestaEntity, (encuesta)=> encuesta.usuario_basico)
+    @OneToMany(()=> EncuestaEntity, (encuesta)=> encuesta.usuario_basico, {cascade: true})
     encuestas!: EncuestaEntity[];
 }
