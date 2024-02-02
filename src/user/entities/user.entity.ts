@@ -1,5 +1,5 @@
 import { Column, Entity } from "typeorm";
-import { BaseEntity } from "../config/base.entity";
+import { BaseEntity } from "../../config/base.entity";
 
 
 enum Genero {
@@ -16,11 +16,15 @@ export class userEntity extends BaseEntity {
     apellido!: string;
     
     @Column({
+        type: 'date',
         nullable: true,
     })
     fecha_nacimiento!: Date;
     
-    @Column()
+    @Column({
+        type: 'varchar',
+        nullable: true,
+    })
     direccion!: string;
     
     @Column({
@@ -32,22 +36,37 @@ export class userEntity extends BaseEntity {
     })
     email!: string;
     
-    @Column()
+    @Column({
+        type: 'varchar',
+        length: 10,
+    })
     movil1!: string;
  
-    @Column()
+    @Column({
+        type: 'varchar',
+        length: 10,
+        nullable: true,
+    })
     movil2!: string;
     
-    @Column()
+    @Column({
+        type: 'varchar',
+        length: 10,
+        nullable: true,
+    })
     telefono_fijo!: string;
     
     @Column({
         type: "enum",
         enum: Genero,
+        nullable: true,
     })
     genero!: Genero;
     
-    @Column()
-    estado!: number;
+    @Column({
+        type: "boolean",
+        default: true,
+    })
+    estado!: boolean;
 
 };

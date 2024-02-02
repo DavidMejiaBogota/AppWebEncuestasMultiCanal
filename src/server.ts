@@ -4,7 +4,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import { UserRouter } from './router/user.router';
+import { UserRouter } from './user/user.router';
 import { Configserver } from './config/config';
 import { DataSource, createConnection } from 'typeorm';
 //import { SqlServerConnectionOptions } from 'typeorm/driver/sqlserver/SqlServerConnectionOptions';
