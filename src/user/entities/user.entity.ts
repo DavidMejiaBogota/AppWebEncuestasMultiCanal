@@ -84,7 +84,7 @@ export class UserEntity extends BaseEntity {
     })
     estado!: boolean;
 
-    @OneToOne(()=> UsuarioBasicoEntity, (usuario_basico)=> usuario_basico.user, {cascade: true, onDelete: "CASCADE"})
+    @OneToOne(()=> UsuarioBasicoEntity, (usuario_basico)=> usuario_basico.user)
     usuario_basico!: UsuarioBasicoEntity;
 
 };

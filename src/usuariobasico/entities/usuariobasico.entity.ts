@@ -3,6 +3,7 @@ import { BaseEntity} from "../../config/base.entity";
 import { Length, IsEmail } from "class-validator";
 import { UserEntity } from "../../user/entities/user.entity";
 import { EncuestaEntity } from "../../encuesta/entities/encuesta.entity";
+import { PreguntasEntity } from "../../pregunta/entities/pregunta.entity";
 
 @Entity({name: "usuario_basico"})
 export class UsuarioBasicoEntity extends BaseEntity {
@@ -45,4 +46,7 @@ export class UsuarioBasicoEntity extends BaseEntity {
     
     @OneToMany(()=> EncuestaEntity, (encuesta)=> encuesta.usuario_basico, {cascade: true})
     encuestas!: EncuestaEntity[];
+
+    @OneToMany(()=> PreguntasEntity, (pregunta)=> pregunta.encuesta, {cascade: true})
+    preguntas!: PreguntasEntity[];
 }
