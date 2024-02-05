@@ -8,6 +8,9 @@ export class EncuestaEntity extends BaseEntity{
     @Column({name: "nombre_encuesta"})
     nombreEncuesta!: string;
 
+    @Column({name: "objetivo_encuesta"})
+    objetivoEncuesta!: string;
+
     @Column({name: "fecha_cierre_encuesta", type: "date", nullable: true})
     fechaCierreEncuesta!: Date;
 
