@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import { BaseEntity} from "../../config/base.entity";
 import { UsuarioBasicoEntity } from "../../usuariobasico/entities/usuariobasico.entity";
 import { PreguntasEntity } from "../../pregunta/entities/pregunta.entity";
@@ -20,5 +20,7 @@ export class EncuestaEntity extends BaseEntity{
     @ManyToOne(()=>UsuarioBasicoEntity, (usuario_basico)=>usuario_basico.encuestas, {onDelete: "CASCADE"})
     @JoinColumn({name:'usuario_basico_id'})
     usuario_basico!:UsuarioBasicoEntity;
+
+    @OneToMany(()=> PreguntasEntity, (pregunta) => pregunta.encuesta)
     preguntas!: PreguntasEntity[];
 }
