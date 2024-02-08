@@ -1,12 +1,10 @@
-import { Column, Entity, OneToOne } from "typeorm";
+import { Column, Entity, Exclusion, OneToOne } from "typeorm";
 import { BaseEntity } from "../../config/base.entity";
 import { Length, Matches } from "class-validator";
 import { UsuarioBasicoEntity } from "../../usuariobasico/entities/usuariobasico.entity";
+import { Exclude } from "class-transformer";
+import { Genero } from "../../enums/enums";
 
-enum Genero {
-    Masculino = 'Masculino',
-    Femenino = 'Femenino',
-}
 
 @Entity({name:"user"})
 export class UserEntity extends BaseEntity {
@@ -31,6 +29,7 @@ export class UserEntity extends BaseEntity {
     })
     email!: string;
 
+    //@Exclude()  
     @Column({nullable: false})
     @Length(12, 255, { message: 'La contraseña debe tener entre 12 y 255 caracteres' })
     @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/, { message: 'La contraseña debe contener minúsculas, mayúsculas, números y caracteres especiales' })
