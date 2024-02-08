@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
-import { UserService } from "../services/user.service";
+//import { UserService } from "../services/user.service";
 
 export class UserController  {
+    /** 
     constructor(private readonly userService: UserService = new UserService()) {}
     async getUsers (req: Request, res: Response) {
         
@@ -12,4 +13,5 @@ export class UserController  {
             console.error(e);
         }
     }
+    */
 } 
