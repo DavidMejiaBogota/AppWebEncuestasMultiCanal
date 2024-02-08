@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 import {DataSource, DataSourceOptions, createConnection} from "typeorm";
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
-export abstract class Configserver {
+export abstract class ConfigServer {
     constructor() {
         const nodeNameEnv = this.createPathEnv(this.nodeEnv);
         dotenv.config({
@@ -54,7 +54,7 @@ export abstract class Configserver {
         };  
     }
 
-    async dbConnection(): Promise<DataSource> {
+    async dbConnect(): Promise<DataSource> {
         return await createConnection(this.typeORMConfig);
     }
 }

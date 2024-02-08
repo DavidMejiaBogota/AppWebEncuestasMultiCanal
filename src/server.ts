@@ -5,12 +5,10 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import { UserRouter } from './user/user.router';
-import { Configserver } from './config/config';
-import { DataSource, createConnection } from 'typeorm';
-//import { SqlServerConnectionOptions } from 'typeorm/driver/sqlserver/SqlServerConnectionOptions';
+import { ConfigServer } from './config/config';
 
 //Clase de servidor inicial
-class ServerBootstrap extends Configserver {
+class ServerBootstrap extends ConfigServer {
     public app: express.Application = express()//App a demas del tipado va a tener toda la configuración real;
     private port: number= this.getNumberEnv('PORT');
     
@@ -20,7 +18,7 @@ class ServerBootstrap extends Configserver {
         super();
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended: true}));
-        this.dbConnection();
+        //this.dbConnect();
         this.app.use(morgan('dev'));
         this.app.use(cors());
         
@@ -32,9 +30,6 @@ class ServerBootstrap extends Configserver {
         return [new UserRouter().router];
     }
 
-    async dbConnection(): Promise<DataSource> {
-        return await createConnection(this.typeORMConfig);
-    }
 
     public listen() {
         this.app.listen(this.port, ()=>{

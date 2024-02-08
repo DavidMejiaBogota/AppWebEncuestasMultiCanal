@@ -6,13 +6,13 @@ export abstract class BaseEntity {
     id!: number;
 
     @CreateDateColumn({
-        name: "created_ad",
+        name: "created_at",
         type: "timestamp", //Para traer el dato compelto de año-mes-dia:horas:minuto:segundos
     })
     createAd!: Date;
 
     @UpdateDateColumn({
-        name: "update_ad",
+        name: "update_at",
         type: "timestamp", //Para traer el dato compelto de año-mes-dia:horas:minuto:segundos
     })
     updateAd!: Date;
