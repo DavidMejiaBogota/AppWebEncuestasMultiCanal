@@ -1,9 +1,11 @@
 import { Request, Response } from "express";
-//import { UserService } from "../services/user.service";
+import { UserService } from "../services/user.service";
 
 export class UserController  {
-    /** 
+    
     constructor(private readonly userService: UserService = new UserService()) {}
+    
+    //Método para buscar todos los usuarios
     async getUsers (req: Request, res: Response) {
         
         try {
@@ -13,5 +15,48 @@ export class UserController  {
             console.error(e);
         }
     }
-    */
+
+    //Método para buscar un usuario por id
+    async getUserById (req: Request, res: Response) {
+        const {id} = req.params;
+        try {
+            const numericId = Number(id);
+            const data = await this.userService.findUserById(numericId);
+     } catch (e) {
+        console.error(e);
+     }   
+    }
+
+    //Método para crear usuario
+    async createUser(req: Request, res: Response) {
+        try {
+            const data = await this.userService.createUser(req.body);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    //Método para actualizar un usuario
+    async updateUser(req: Request, res: Response) {
+        const {id} = req.params;
+        try {
+            const numericId = Number(id);
+            const data = await this.userService.updateUser(numericId, req.body);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    //Método para eliminar un usuario
+    async deleteUser(req: Request, res: Response) {
+        const {id} = req.params;
+        try {
+            const numericId = Number(id);
+            const data = await this.userService.deleteUser(numericId);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    
 } 
