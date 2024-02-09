@@ -29,7 +29,7 @@ export class UserEntity extends BaseEntity {
     })
     email!: string;
 
-    //@Exclude()  
+    @Exclude()  
     @Column({nullable: false})
     @Length(12, 255, { message: 'La contraseña debe tener entre 12 y 255 caracteres' })
     @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/, { message: 'La contraseña debe contener minúsculas, mayúsculas, números y caracteres especiales' })
