@@ -1,4 +1,4 @@
-import { IsNotEmpty } from "class-validator";
+import { IsNotEmpty, IsOptional } from "class-validator";
 import { BaseDTO } from "../../config/base.dto";
 import { Genero } from "../../enums/enums";
 
@@ -16,7 +16,7 @@ export class UserDTO extends BaseDTO {
     @IsNotEmpty()
     email!: string;
 
-    
+    @IsOptional()
     password!: string;
     
     @IsNotEmpty()
