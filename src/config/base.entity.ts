@@ -2,7 +2,7 @@ import {  CreateDateColumn, IntegerType, PrimaryGeneratedColumn, UpdateDateColum
 
 export abstract class BaseEntity {
     
-    @PrimaryGeneratedColumn({ type: 'int' })
+    @PrimaryGeneratedColumn({type: 'int'})
     id!: number;
 
     @CreateDateColumn({
