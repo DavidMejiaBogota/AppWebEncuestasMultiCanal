@@ -10,39 +10,39 @@ export class UserDTO extends BaseDTO {
     @IsNotEmpty()
     apellido!: string;
     
-    @IsNotEmpty()
+    @IsOptional()
     fecha_nacimiento!: Date;
            
     @IsNotEmpty()
     email!: string;
 
-    @IsOptional()
+    @IsNotEmpty()
     password!: string;
     
-    @IsNotEmpty()
+    @IsOptional()
     movil1!: string;
  
-    @IsNotEmpty()
+    @IsOptional()
     movil2!: string;
     
-    @IsNotEmpty()
+    @IsOptional()
     telefono_fijo!: string;
     
-    @IsNotEmpty()
+    @IsOptional()
     genero!: Genero;
     
-    @IsNotEmpty()
+    @IsOptional()
     direccion!: string;
 
-    @IsNotEmpty()
+    @IsOptional()
     ciudad!: string;
 
-    @IsNotEmpty()
+    @IsOptional()
     departamento!: string;
 
-    @IsNotEmpty()
+    @IsOptional()
     pais!: string;
     
-    @IsNotEmpty()
+    @IsOptional()
     estado!: boolean;
 }

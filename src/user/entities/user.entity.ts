@@ -38,13 +38,16 @@ export class UserEntity extends BaseEntity {
     @Column({
         type: 'varchar',
         length: 10,
+        nullable: true,
+        default: "0",
     })
     movil1!: string;
  
     @Column({
+        nullable: true,
         type: 'varchar',
         length: 10,
-        nullable: true,
+        default: "0",
     })
     movil2!: string;
     
@@ -52,6 +55,7 @@ export class UserEntity extends BaseEntity {
         type: 'varchar',
         length: 10,
         nullable: true,
+        default: "0",
     })
     telefono_fijo!: string;
     
@@ -65,21 +69,23 @@ export class UserEntity extends BaseEntity {
     @Column({
         type: 'varchar',
         nullable: true,
+        default: "0",
     })
     direccion!: string;
 
-    @Column({nullable: true})
+    @Column({nullable: true, default: "0",})
     ciudad!: string;
 
-    @Column({nullable: true})
+    @Column({nullable: true, default: "0",})
     departamento!: string;
 
-    @Column({nullable: true})
+    @Column({nullable: true, default: "0",})
     pais!: string;
     
     @Column({
         type: "boolean",
-        default: true
+        default: true, // o false según tus requisitos
+        nullable: true,
     })
     estado!: boolean;
 
