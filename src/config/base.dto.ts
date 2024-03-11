@@ -17,7 +17,7 @@ export class BaseDTO {
     @IsDate()
     @IsOptional()
     updateAd!: Date;
-}
+};
 
 /**
  * La clase BaseDTO creada es una clase de Transferencia de Datos

@@ -40,5 +40,3 @@ class ServerBootstrap extends ConfigServer {
 }
 
 new ServerBootstrap(); //Se ejecuta la clase y que sepa que ejecutar por dentro.
-
-

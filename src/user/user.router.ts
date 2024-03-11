@@ -13,4 +13,4 @@ export class UserRouter extends BaseRouter<UserController> {
         this.router.delete('/deleteUser/:id', (req, res)=> this.controller.deleteUser(req, res));
         this.router.put('/updateUser/:id', (req, res)=> this.controller.updateUser(req, res));
     }
-}
+}; 

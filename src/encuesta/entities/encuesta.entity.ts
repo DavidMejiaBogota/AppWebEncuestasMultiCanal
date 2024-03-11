@@ -23,4 +23,4 @@ export class EncuestaEntity extends BaseEntity{
 
     @OneToMany(()=> PreguntasEntity, (pregunta) => pregunta.encuesta)
     preguntas!: PreguntasEntity[];
-}
+};

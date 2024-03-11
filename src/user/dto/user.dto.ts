@@ -45,4 +45,4 @@ export class UserDTO extends BaseDTO {
     
     @IsOptional()
     estado!: boolean;
-}
+};

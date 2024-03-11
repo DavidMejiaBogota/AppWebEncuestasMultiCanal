@@ -16,4 +16,4 @@ export class RespuestaEntity extends BaseEntity {
 
     @OneToMany(() => OpcionRespuestaCerradaEntity, (opcion) => opcion.respuesta)
     opcionesCerradas!: OpcionRespuestaCerradaEntity[];
-}
+};

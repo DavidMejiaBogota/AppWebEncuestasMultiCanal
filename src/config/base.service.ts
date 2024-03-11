@@ -27,7 +27,7 @@ export class BaseService<T extends BaseEntity> extends ConfigServer{
         return getConn.getRepository(entity);
 
     }
-}
+};
 
 /**
  * La clase BaseService se utiliza para encapsular la lógica común de acceso a la base de datos 

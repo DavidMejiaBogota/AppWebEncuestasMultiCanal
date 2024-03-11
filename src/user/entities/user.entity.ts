@@ -92,4 +92,4 @@ export class UserEntity extends BaseEntity {
     @OneToOne(()=> UsuarioBasicoEntity, (usuario_basico)=> usuario_basico.user)
     usuario_basico!: UsuarioBasicoEntity;
 
-};
+}; 

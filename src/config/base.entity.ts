@@ -16,5 +16,4 @@ export abstract class BaseEntity {
         type: "timestamp", //Para traer el dato compelto de año-mes-dia:horas:minuto:segundos
     })
     updateAt!: Date;
-}
-
+};

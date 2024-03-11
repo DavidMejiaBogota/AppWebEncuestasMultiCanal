@@ -40,7 +40,7 @@ export class UsuarioBasicoEntity extends BaseEntity {
     @Column({name: "estado_empresa", type: "boolean", default: true})
     estadoEmpresa!: boolean;
 
-    @OneToOne(()=> UserEntity, (user)=> user.usuario_basico) //Establece la relación de uno a uno con la tabla usuario_basico y user.
+    //@OneToOne(()=> UserEntity, (user)=> user.usuario_basico) //Establece la relación de uno a uno con la tabla usuario_basico y user.
     @JoinColumn()
     user!: UserEntity;
     
@@ -49,4 +49,4 @@ export class UsuarioBasicoEntity extends BaseEntity {
 
     @OneToMany(()=> PreguntasEntity, (pregunta)=> pregunta.encuesta, {cascade: true})
     preguntas!: PreguntasEntity[];
-}
+};

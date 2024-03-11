@@ -6,4 +6,4 @@ export enum Genero {
 export enum TipoRespuesta {
     Abierta = "Abierta",
     Cerrada = "Cerrada",
-}
+};

@@ -57,4 +57,4 @@ export abstract class ConfigServer {
     async dbConnect(): Promise<DataSource> {
         return await createConnection(this.typeORMConfig);
     }
-}
+};

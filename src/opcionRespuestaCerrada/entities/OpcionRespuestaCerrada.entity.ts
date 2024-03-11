@@ -16,4 +16,4 @@ export class OpcionRespuestaCerradaEntity extends BaseEntity {
     @JoinColumn({name: "pregunta_id"})
     pregunta!: PreguntasEntity;
 
-}
+};
