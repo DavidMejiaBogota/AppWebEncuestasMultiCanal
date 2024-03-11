@@ -66,11 +66,7 @@ export class UserEntity extends BaseEntity {
     })
     genero!: Genero;
     
-    @Column({
-        type: 'varchar',
-        nullable: true,
-        default: "0",
-    })
+    @Column({nullable: true, default: "0",}) 
     direccion!: string;
 
     @Column({nullable: true, default: "0",})

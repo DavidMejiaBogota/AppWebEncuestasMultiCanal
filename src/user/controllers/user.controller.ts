@@ -1,18 +1,27 @@
+import { HttpResponse } from './../../shared/response/http.response';
 import { Request, Response } from "express";
 import { UserService } from "../services/user.service";
+import { DeleteResult, UpdateResult } from 'typeorm';
 
 export class UserController  {
     
-    constructor(private readonly userService: UserService = new UserService()) {}
+    constructor(
+        private readonly userService: UserService = new UserService(),
+        private readonly httpResponse: HttpResponse = new HttpResponse()
+        ) {}
     
     //Método para buscar todos los usuarios
     async getUsers (req: Request, res: Response) {
         
         try {
             const data = await this.userService.findAllUser();
-            res.status(200).json(data)
+            if(data.length === 0) {
+                return this.httpResponse.NotFound(res, "No extiste dato");
+            }
+            return this.httpResponse.Ok(res, data)
         } catch (e) {
             console.error(e);
+            return this.httpResponse.Error(res, e);
         }
     }
 
@@ -22,9 +31,13 @@ export class UserController  {
         try {
             const numericId = Number(id);
             const data = await this.userService.findUserById(numericId);
-            res.status(200).json(data)
+            if (!data) {
+                return this.httpResponse.NotFound(res, "No extiste dato");
+            }
+            return this.httpResponse.Ok(res, data)
      } catch (e) {
         console.error(e);
+        return this.httpResponse.Error(res, e);
      }   
     }
 
@@ -32,9 +45,10 @@ export class UserController  {
     async createUser(req: Request, res: Response) {
         try {
             const data = await this.userService.createUser(req.body);
-            res.status(200).json(data)
+            return this.httpResponse.Ok(res, data);
         } catch (e) {
             console.error(e);
+            return this.httpResponse.Error(res, e);
         }
     }
 
@@ -43,10 +57,14 @@ export class UserController  {
         const {id} = req.params;
         try {
             const numericId = Number(id);
-            const data = await this.userService.updateUser(numericId, req.body);
-            res.status(200).json(data)
+            const data: UpdateResult = await this.userService.updateUser(numericId, req.body);
+            if (!data.affected) {
+                return this.httpResponse.NotFound(res, "Hay un error en actualizar");
+            }
+            return this.httpResponse.Ok(res, data)
         } catch (e) {
             console.error(e);
+            return this.httpResponse.Error(res, e);
         }
     }
 
@@ -55,9 +73,14 @@ export class UserController  {
         const {id} = req.params;
         try {
             const numericId = Number(id);
-            const data = await this.userService.deleteUser(numericId);
+            const data: DeleteResult = await this.userService.deleteUser(numericId);
+            if(!data.affected) {
+                return this.httpResponse.NotFound(res, "Hay un error en eliminar, ese ID no existe");
+            }
+            return this.httpResponse.Ok(res, data)
         } catch (e) {
             console.error(e);
+            return this.httpResponse.Error(res, e);
         }
     }
 
