@@ -32,7 +32,7 @@ export class HttpResponse {
     NotFound(res: Response, data?: any): Response{
         return res.status(HttpStatus.NOT_FOUND).json({
             status: HttpStatus.NOT_FOUND,
-            statusMsg: "Not Foundf",
+            statusMsg: "Not Found",
             error: data,
         });
     }
