@@ -2,6 +2,7 @@ import { EntityTarget, Repository } from "typeorm";
 import { BaseEntity } from "./base.entity";
 import { ConfigServer } from "./config";
 
+
 export class BaseService<T extends BaseEntity> extends ConfigServer{
     /**
      * Esta clase está diseñada para manejar y ejecutar operaciones en un repositorio de
@@ -23,7 +24,7 @@ export class BaseService<T extends BaseEntity> extends ConfigServer{
      * la creación y obtención de repositorios de entidades de manera genérica.
      */
     async initRepository<T extends BaseEntity>(entity: EntityTarget<T>): Promise<Repository<T>> {
-        const getConn = await this.dbConnect(); //Conexión a la bd.
+        const getConn = await this.initConnect; //Conexión a la bd.
         return getConn.getRepository(entity);
 
     }

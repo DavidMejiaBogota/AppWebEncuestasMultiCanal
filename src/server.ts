@@ -1,3 +1,4 @@
+import { DataSource } from 'typeorm';
 //Confugración y levantamiento del servidor con Class al estilo TypeScript.
 
 //Llamado de dependicias para el server
@@ -18,7 +19,7 @@ class ServerBootstrap extends ConfigServer {
         super();
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended: true}));
-        //this.dbConnect();
+        this.dbConnect();
         this.app.use(morgan('dev'));
         this.app.use(cors());
         
@@ -30,6 +31,13 @@ class ServerBootstrap extends ConfigServer {
         return [new UserRouter().router];
     }
 
+    async dbConnect(): Promise<DataSource | void> {
+        return this.initConnect.then(() => {
+            console.log("Connect Success")
+        }).catch((err) =>{
+            console.error(err);
+        })
+    };
 
     public listen() {
         this.app.listen(this.port, ()=>{

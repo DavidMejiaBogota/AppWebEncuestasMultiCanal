@@ -7,7 +7,6 @@ export class UserService extends BaseService<UserEntity> {
     constructor() {
         super(UserEntity);
     }
-
     /**
      * Ahora se agregan los métos a través de las 5 funciones funcines tipicas de un CRUD
      */
@@ -32,6 +31,5 @@ export class UserService extends BaseService<UserEntity> {
     async updateUser(id: number, infoUpdate: UserDTO): Promise<UpdateResult>{
         return (await this.execRepository).update(id, infoUpdate);
     };
-    
 
 };
